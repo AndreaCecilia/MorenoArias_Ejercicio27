@@ -1,0 +1,30 @@
+﻿import os
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10,5))
+
+data = np.loadtxt("0_1.dat")
+data1 = np.loadtxt("0_01.dat")
+data2 = np.loadtxt("1.dat")
+
+N1=len(data)/3
+N2=len(data1)/3
+N3=len(data2)/3
+plt.subplot(1,2,1)
+plt.plot(data[0:int(N1)],data[int(N1):2*int(N1)])
+plt.plot(data1[0:int(N2)],data1[int(N2):2*int(N2)])
+plt.plot(data2[0:int(N3)],data2[int(N3):2*int(N3)])
+plt.title("Solución método explicito")
+plt.xlabel('X')
+plt.ylabel('Y')
+
+plt.subplot(1,2,2)
+plt.plot(data[0:int(N1)], data[2*int(N1):len(data)])
+plt.plot(data1[0:int(N2)], data1[2*int(N2):len(data1)])
+plt.plot(data2[0:int(N3)], data2[2*int(N3):len(data2)])
+plt.title("Solución método implicito")
+plt.xlabel('X')
+plt.ylabel('Y')
+
+plt.savefig("img.png")
